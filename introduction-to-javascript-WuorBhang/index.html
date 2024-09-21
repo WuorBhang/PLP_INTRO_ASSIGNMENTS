@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration and Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Light blue background */
+            margin: 0;
+            padding: 150px;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full viewport height */
+            flex-direction: column; /* Stack forms vertically */
+        }
+
+        h2 {
+            color: #003366; /* Dark blue for headings */
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #e6f7ff; /* Light blue for form background */
+            border: 1px solid #003366; /* Dark blue border */
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Set a fixed width for the form */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #003366; /* Dark blue for labels */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px;
+            border: 1px solid #003366; /* Dark blue border */
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #003366; /* Dark blue button */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%; /* Full width button */
+        }
+
+        button:hover {
+            background-color: #00509e; /* Lighter blue on hover */
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+        .toggle-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #003366; /* Dark blue for links */
+            text-decoration: none;
+        }
+
+        .toggle-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="registrationContainer">
+        <h2>Registration Form</h2>
+        <form id="registrationForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><span class="error" id="nameError"></span>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required><span class="error" id="emailError"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required><span class="error" id="passwordError"></span>
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" required><span class="error" id="confirmPasswordError"></span>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" min="18" max="100" required><span class="error" id="ageError"></span>
+
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="male" required> Male
+            <input type="radio" name="gender" value="female" required> Female
+            <span class="error" id="genderError"></span>
+
+            <label for="country">Country:</label>
+            <select id="country" required>
+                <option value="">Select your country</option>
+                <option value="kenya">Kenya</option>
+                <option value="southsudan">South Sudan</option>
+                <option value="uganda">Uganda</option>
+                <option value="Ethiopia">Ethiopia</option>
+                <option value="sudan">Sudan</option>
+            </select><span class="error" id="countryError"></span>
+
+            <input type="checkbox" id="terms" required> I agree to the Terms and Conditions<span class="error" id="termsError"></span>
+
+            <button type="submit">Register</button>
+        </form>
+        <a href="#" class="toggle-link" id="showLogin">Already have an account? Sign In</a>
+    </div>
+
+    <div id="loginContainer" style="display: none;">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" required><span class="error" id="loginEmailError"></span>
+
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" required><span class="error" id="loginPasswordError"></span>
+
+            <button type="submit">Login</button>
+        </form>
+        <a href="#" class="toggle-link" id="showRegister">Don't have an account? Register</a>
+    </div>
+
+    <script>
+        document.getElementById('showLogin').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('registrationContainer').style.display = 'none';
+            document.getElementById('loginContainer').style.display = 'block';
+        });
+
+        document.getElementById('showRegister').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('loginContainer').style.display = 'none';
+            document.getElementById('registrationContainer').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
